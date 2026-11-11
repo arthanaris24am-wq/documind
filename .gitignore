@@ -42,6 +42,9 @@ htmlcov/
 
 # Data & MLOps artifacts
 data/raw/
+data/eval/eval_results.json
+data/eval/experiments/
+best_config.json
 mlruns/
 mlartifacts/
 *.db
