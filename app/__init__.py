@@ -1,0 +1,2 @@
+"""DocuMind application package."""
+

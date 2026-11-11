@@ -1,0 +1,15 @@
+RAG Best Practices for DocuMind
+
+1. Chunking Strategy
+Documents are split into overlapping chunks using RecursiveCharacterTextSplitter.
+A default chunk_size of 500 characters and chunk_overlap of 50 characters preserves local context across chunk boundaries without diluting retrieval precision.
+
+2. Metadata Tracking
+Every vector stored in Qdrant includes filename, page number, doc_id, chunk_index, and chunk_id so that answers can cite exact sources.
+
+3. Optional Cross-Encoder Reranking
+When use_reranker is enabled in configs/config.yaml, DocuMind retrieves a wider candidate set (top_k * rerank_candidate_multiplier) from Qdrant and reranks them with a cross-encoder model before prompting the LLM.
+
+4. Grounded Prompting
+The system prompt instructs the language model to answer strictly from retrieved context, cite sources inline, and respond with "I don't know based on the provided documents" whenever the retrieved context is insufficient.
+
