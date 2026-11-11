@@ -1,0 +1,91 @@
+[
+  {
+    "question": "What operating system is DocuMind developed on?",
+    "ground_truth": "DocuMind is built for local development on Windows 11."
+  },
+  {
+    "question": "Which FastAPI endpoints does the DocuMind backend expose?",
+    "ground_truth": "The FastAPI backend exposes /health, /ingest, /query, /documents, and /documents/{id}."
+  },
+  {
+    "question": "What features does the DocuMind Streamlit UI provide?",
+    "ground_truth": "The Streamlit UI provides document upload, library management, and grounded Q&A with expandable source citations and similarity scores."
+  },
+  {
+    "question": "Which embedding model does DocuMind use and on what hardware?",
+    "ground_truth": "DocuMind uses BAAI/bge-small-en-v1.5 via sentence-transformers on CPU."
+  },
+  {
+    "question": "When is the embedding model loaded in the FastAPI backend?",
+    "ground_truth": "The embedding model is loaded once at FastAPI startup."
+  },
+  {
+    "question": "What are the three Qdrant modes supported by DocuMind?",
+    "ground_truth": "DocuMind supports memory mode for offline tests, docker mode for local development, and cloud mode for production deployments."
+  },
+  {
+    "question": "What is Qdrant memory mode used for?",
+    "ground_truth": "Qdrant memory mode uses an in-memory client for fast offline unit and integration tests."
+  },
+  {
+    "question": "What is Qdrant docker mode used for?",
+    "ground_truth": "Qdrant docker mode connects to a local Qdrant container for local development."
+  },
+  {
+    "question": "How does DocuMind handle Gemini API rate limits?",
+    "ground_truth": "DocuMind abstracts Gemini API calls behind an LLMClient interface with exponential backoff and retry logic for rate limits."
+  },
+  {
+    "question": "Which text splitter is used to chunk documents in DocuMind?",
+    "ground_truth": "Documents are split into overlapping chunks using RecursiveCharacterTextSplitter."
+  },
+  {
+    "question": "What are the default chunk_size and chunk_overlap values?",
+    "ground_truth": "The default chunk_size is 500 characters and the default chunk_overlap is 50 characters."
+  },
+  {
+    "question": "Why does DocuMind use overlapping chunks of 50 characters?",
+    "ground_truth": "A chunk_overlap of 50 characters preserves local context across chunk boundaries without diluting retrieval precision."
+  },
+  {
+    "question": "What metadata fields are stored with each vector in Qdrant?",
+    "ground_truth": "Every vector stored in Qdrant includes filename, page number, doc_id, chunk_index, and chunk_id."
+  },
+  {
+    "question": "Why does DocuMind store metadata with every vector in Qdrant?",
+    "ground_truth": "Metadata is stored with every vector so that answers can cite exact sources."
+  },
+  {
+    "question": "Which configuration flag controls cross-encoder reranking?",
+    "ground_truth": "Cross-encoder reranking is controlled by the use_reranker flag in configs/config.yaml."
+  },
+  {
+    "question": "How does retrieval work when use_reranker is enabled?",
+    "ground_truth": "When use_reranker is enabled, DocuMind retrieves a wider candidate set of top_k times rerank_candidate_multiplier from Qdrant and reranks them with a cross-encoder model before prompting the LLM."
+  },
+  {
+    "question": "What rules does the DocuMind grounded system prompt enforce?",
+    "ground_truth": "The system prompt instructs the model to answer strictly from retrieved context, cite sources inline, and say \"I don't know based on the provided documents\" when context is insufficient."
+  },
+  {
+    "question": "What should DocuMind respond when the retrieved context is insufficient?",
+    "ground_truth": "It must respond with \"I don't know based on the provided documents\"."
+  },
+  {
+    "question": "Which platform and SDK does DocuMind target for free cloud deployment?",
+    "ground_truth": "Free deployment targets Hugging Face Spaces with the Docker SDK."
+  },
+  {
+    "question": "Which port does Hugging Face Spaces expose for DocuMind?",
+    "ground_truth": "Hugging Face Spaces exposes DocuMind on port 7860."
+  },
+  {
+    "question": "What managed vector database service does DocuMind use in free cloud deployment?",
+    "ground_truth": "Vector storage in free cloud deployment uses Qdrant Cloud Free Tier."
+  },
+  {
+    "question": "Which environment variables are used to connect to Qdrant Cloud Free Tier?",
+    "ground_truth": "Connecting to Qdrant Cloud Free Tier uses QDRANT_URL and QDRANT_API_KEY."
+  }
+]
+

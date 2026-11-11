@@ -17,4 +17,3 @@ ignore = ["B008"]
 testpaths = ["tests"]
 pythonpath = ["."]
 addopts = "-v"
-
